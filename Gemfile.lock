@@ -23,6 +23,15 @@ GIT
       multi_json (~> 1.0)
       stripe (>= 1.31.0, <= 1.58.0)
 
+GIT
+  remote: https://github.com/ruby-grape/grape-entity.git
+  revision: 0e04aa561373b510c2486282979085eaef2ae663
+  ref: 0e04aa561373b510c2486282979085eaef2ae663
+  specs:
+    grape-entity (0.7.1)
+      activesupport (>= 3.0.0)
+      multi_json (>= 1.3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -71,6 +80,10 @@ GEM
       mail (> 2.2.5)
       mime-types
       xml-simple
+    axiom-types (0.1.1)
+      descendants_tracker (~> 0.0.4)
+      ice_nine (~> 0.11.0)
+      thread_safe (~> 0.3, >= 0.3.1)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -95,6 +108,8 @@ GEM
       simplecov
       url
     coderay (1.1.2)
+    coercible (1.0.0)
+      descendants_tracker (~> 0.0.1)
     colorize (0.8.1)
     concurrent-ruby (1.0.5)
     config (1.7.0)
@@ -123,6 +138,8 @@ GEM
     delayed_job_active_record (4.1.1)
       activerecord (>= 3.0, < 5.1)
       delayed_job (>= 3.0, < 5)
+    descendants_tracker (0.0.4)
+      thread_safe (~> 0.3, >= 0.3.1)
     devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -166,6 +183,7 @@ GEM
       dry-equalizer (~> 0.2)
       dry-logic (~> 0.4, >= 0.4.0)
       dry-types (~> 0.12.0)
+    equalizer (0.0.11)
     erubis (2.7.0)
     execjs (2.5.2)
     factory_bot (4.8.2)
@@ -190,6 +208,18 @@ GEM
       plissken
     geocoder (1.2.11)
     get_process_mem (0.2.1)
+    grape (1.0.2)
+      activesupport
+      builder
+      mustermann-grape (~> 1.0.0)
+      rack (>= 1.3.0)
+      rack-accept
+      virtus (>= 1.0.0)
+    grape-swagger (0.28.0)
+      grape (>= 0.16.2)
+    grape-swagger-entity (0.2.3)
+      grape-entity (>= 0.5.0)
+      grape-swagger (>= 0.20.4)
     hamster (3.0.0)
       concurrent-ruby (~> 1.0)
     hashie (3.4.1)
@@ -205,6 +235,7 @@ GEM
     i18n-js (3.0.2)
       i18n (~> 0.6, >= 0.6.6)
     i18n_data (0.8.0)
+    ice_nine (0.11.2)
     inflecto (0.0.2)
     journey (1.0.4)
     json (1.8.6)
@@ -229,6 +260,9 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    mustermann (1.0.2)
+    mustermann-grape (1.0.0)
+      mustermann (~> 1.0.0)
     nearest_time_zone (0.0.4)
       andand
       kdtree
@@ -258,6 +292,8 @@ GEM
     rabl (0.11.6)
       activesupport (>= 2.3.14)
     rack (1.4.7)
+    rack-accept (0.4.5)
+      rack (>= 0.4)
     rack-attack (4.2.0)
       rack
     rack-cache (1.7.0)
@@ -377,6 +413,11 @@ GEM
     unicode_utils (1.4.0)
     url (0.3.2)
     vcr (2.9.3)
+    virtus (1.0.5)
+      axiom-types (~> 0.1)
+      coercible (~> 1.0)
+      descendants_tracker (~> 0.0, >= 0.0.3)
+      equalizer (~> 0.0, >= 0.0.9)
     warden (1.2.3)
       rack (>= 1.0)
     webmock (1.21.0)
@@ -418,6 +459,10 @@ DEPENDENCIES
   foreman
   fullcontact
   geocoder
+  grape
+  grape-entity!
+  grape-swagger
+  grape-swagger-entity
   hamster
   heroku-deflater
   httparty
