@@ -3,7 +3,7 @@ class Houdini::V1::Nonprofit < Houdini::V1::BaseAPI
    helpers Houdini::V1::Helpers::ApplicationHelper, Houdini::V1::Helpers::RescueHelper
 
    before do
-    # protect_against_forgery
+     protect_against_forgery
    end
 
   desc 'Return a nonprofit.' do
@@ -24,29 +24,31 @@ class Houdini::V1::Nonprofit < Houdini::V1::BaseAPI
     success Houdini::V1::Entities::Nonprofit
 
     #this needs to be a validation an array
-    failure [{code:400, message:'Validation Errors',  model: Houdini::V1::Entities::ValidationError}]
+    failure [{code:400, message:'Validation Errors',  model: Houdini::V1::Entities::ValidationErrors}]
   end
+
   params do
-    requires :nonprofit, type: Hash do
-      requires :name, type:String, desc: 'Organization Name', allow_blank: false
-      requires :url, type:String, allow_blank: false, desc: 'Organization website URL', url: true
-      requires :zip_code, type:String, allow_blank: false, desc: "Organization Address ZIP Code"
-      requires :state_code, type:String, allow_blank: false, desc: "Organization Address State Code", values: Format::Geography::StateCodes
-      requires :city, type:String, allow_blank: false, desc: "Organization Address City"
-      optional :email, type:String, desc: 'Organization email (public)'
-      optional :phone, type:String, desc: 'Organization phone (public)'
+
+    requires :nonprofit, type: Hash  do
+      requires :name, type:String, desc: 'Organization Name', allow_blank: false, documentation: { param_type: 'body' }
+      requires :url, type:String, desc: 'Organization website URL', allow_blank:true, url: true, documentation: { param_type: 'body' }
+      requires :zip_code, type:String, allow_blank: false, desc: "Organization Address ZIP Code", documentation: { param_type: 'body' }
+      requires :state_code, type:String, allow_blank: false, desc: "Organization Address State Code", values: Format::Geography::StateCodes, documentation: { param_type: 'body' }
+      requires :city, type:String, allow_blank: false, desc: "Organization Address City", documentation: { param_type: 'body' }
+      optional :email, type:String, desc: 'Organization email (public)', documentation: { param_type: 'body' }
+      optional :phone, type:String, desc: 'Organization phone (public)', documentation: { param_type: 'body' }
     end
 
     requires :user, type: Hash do
-      requires :name, type:String, desc: 'Full name', allow_blank:false
-      requires :email, type:String, desc: 'Username', allow_blank: false
-      requires :password, type:String, desc: 'Password', allow_blank: false, is_equal_to: :password_confirmation
-      requires :password_confirmation, type:String, desc: 'Password confirmation', allow_blank: false
+      requires :name, type:String, desc: 'Full name', allow_blank:false, documentation: { param_type: 'body' }
+      requires :email, type:String, desc: 'Username', allow_blank: false, documentation: { param_type: 'body' }
+      requires :password, type:String, desc: 'Password', allow_blank: false, is_equal_to: :password_confirmation, documentation: { param_type: 'body' }
+      requires :password_confirmation, type:String, desc: 'Password confirmation', allow_blank: false, documentation: { param_type: 'body' }
     end
 
 
   end
-  post '/register' do
+  post do
 
     Qx.transaction do
       np = Nonprofit.new(OnboardAccounts.set_nonprofit_defaults(params[:nonprofit]))

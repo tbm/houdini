@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StandardFieldComponent sets error message properly 1`] = `
+<div
+  data-ff-field="invalid"
+  data-ff-field-error="Something more"
+>
+  <input
+    data-ff-field-input="invalid"
+  />
+</div>
+`;
+
+exports[`StandardFieldComponent works with a child 1`] = `
+<div
+  data-ff-field="valid"
+  data-ff-field-error=""
+>
+  <input
+    data-ff-field-input="valid"
+  />
+</div>
+`;
+
+exports[`StandardFieldComponent works with no children 1`] = `
+<div
+  data-ff-field="valid"
+  data-ff-field-error=""
+/>
+`;

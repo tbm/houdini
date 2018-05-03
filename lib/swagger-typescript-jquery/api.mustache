@@ -14,6 +14,8 @@ import { Configuration } from '../configuration';
 
 {{#operations}}
 
+
+
 {{#description}}
 /**
  * {{&description}}
@@ -47,6 +49,7 @@ export class {{classname}} {
     }
 
 {{#operation}}
+
     /**
      * {{&notes}}
      {{#summary}}
@@ -238,14 +241,14 @@ export class {{classname}} {
                 {{#responses}}
                     else if (xhr.status == {{{code}}} && {{{code}}} >= 400)
                     {
-                        dfd.reject(xhr, new {{dataType}}Exception(<{{dataType}}>xhr.responseJSON))
+                        dfd.reject(new {{dataType}}Exception(<{{dataType}}>xhr.responseJSON))
                     }
 
                 {{/responses}}
                     else
                     {
 
-                        dfd.reject(xhr, errorThrown)
+                        dfd.reject(errorThrown)
                     }
             }
         );

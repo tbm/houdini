@@ -7,7 +7,9 @@ Commitchange::Application.routes.draw do
 		get '/button_debug/button' => 'button_debug#button'
 		get '/button_debug/embedded/:id' => 'button_debug#embedded'
 		get '/button_debug/button/:id' => 'button_debug#button'
-	end
+  end
+  get 'onboard' => 'onboard#index'
+
 	resources(:emails, {only: [:create]})
 	resources(:settings, {only: [:index]})
 	resources(:pricing, {only: [:index]})

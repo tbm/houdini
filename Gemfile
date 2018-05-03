@@ -161,3 +161,4 @@ gem 'grape-entity', git: 'https://github.com/ruby-grape/grape-entity.git', ref: 
 gem 'grape-swagger'
 gem 'grape-swagger-entity'
 gem 'grape_url_validator'
+gem 'grape_logging'

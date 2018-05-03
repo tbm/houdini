@@ -13,28 +13,20 @@ export interface {{classname}} {{#parent}}extends models.{{{parent}}} {{/parent}
 
 {{/vars}}
 }
-export class {{classname}}Exception extends Error implements {{classname}}{
+export class {{classname}}Exception implements Error{
 
     constructor(obj:{{classname}}, message?:string){
-        super();
         {{#vars}}
-            this.{{name}} = obj.{{name}};
+            this.item = obj;
         {{/vars}}
+
     }
-{{#additionalPropertiesType}}
-    [key: string]: {{{additionalPropertiesType}}}{{#hasVars}} | any{{/hasVars}};
 
-{{/additionalPropertiesType}}
+    message: string;
+    stack: string;
+    name: string;
 
-{{#vars}}
-    {{#description}}
-    /**
-     * {{{description}}}
-     */
-    {{/description}}
-    {{name}}{{^required}}?{{/required}}: {{#isEnum}}{{{datatypeWithEnum}}}{{/isEnum}}{{^isEnum}}{{{datatype}}}{{/isEnum}};
-
-{{/vars}}
+    item: {{classname}};
 }
 
 {{#hasEnums}}

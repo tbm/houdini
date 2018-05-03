@@ -220,6 +220,9 @@ GEM
     grape-swagger-entity (0.2.3)
       grape-entity (>= 0.5.0)
       grape-swagger (>= 0.20.4)
+    grape_logging (1.8.0)
+      grape
+      rack
     grape_url_validator (1.0.0)
       grape (>= 0.12.0)
     hamster (3.0.0)
@@ -465,6 +468,7 @@ DEPENDENCIES
   grape-entity!
   grape-swagger
   grape-swagger-entity
+  grape_logging
   grape_url_validator
   hamster
   heroku-deflater
